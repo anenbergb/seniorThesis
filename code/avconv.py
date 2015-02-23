@@ -7,6 +7,38 @@ import subprocess, re, os
 avconv = 'avconv'
 
 
+def getDuration(videoName):
+    #Returns the duration of the video in seconds.
+    if not os.path.exists(videoName):
+        print '%s does not exist!' % videoName
+        return False
+    # avconv -i video 2>&1 | grep 'Duration' | awk '{print $2}' | sed s/,//
+
+    p = subprocess.Popen(['avconv', '-i', videoName],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    output = err.split()
+    for i in xrange(len(output)):
+        if output[i]=='Duration:':
+            timestr_list = output[i+1].strip(',').replace('.',':').split(':')
+            ftr = [3600,60,1,0.01]
+            return sum([a*b for a,b in zip(ftr, map(int,timestr_list))])
+
+def getSize(videoName):
+    #Returns the duration of the video in seconds.
+    if not os.path.exists(videoName):
+        print '%s does not exist!' % videoName
+        return False
+    p = subprocess.Popen(['avconv', '-i', videoName],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    output = err.split()
+    for i in xrange(len(output)):
+        if output[i]=='Video:':
+            return output[i+4].strip(',')
+
+
+
+
+
 def basicResize(videoName,resizedName):
     if not os.path.exists(videoName):
         print '%s does not exist!' % videoName

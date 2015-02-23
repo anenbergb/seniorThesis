@@ -1,0 +1,14 @@
+In this project we will try to perform the first tubelet experiments.
+
+First, we need to filter the videos by length. We decide to discard all
+videos of length longer than 4 minutes. (240 seconds)
+
+The video lists are in the current directory:
+
+ucf_list.txt
+valid_list.txt
+test_list.txt
+
+Also the dictionary of class names to index and visa vera
+
+class_index.pkl
