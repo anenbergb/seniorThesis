@@ -1,5 +1,5 @@
-SRC="/afs/cs.stanford.edu/u/anenberg/scr/snrThesis/code/"
-
+CODE="/afs/cs.stanford.edu/u/anenberg/scr/snrThesis/code/"
+SCR="/afs/cs.stanford.edu/u/anenberg/scr/"
 
 
 
@@ -15,8 +15,12 @@ TEST_FULL="/afs/cs.stanford.edu/group/cvgl/rawdata/THUMOS2014/Test/test_primaryc
 CLASS_INDEX="/afs/cs.stanford.edu/group/cvgl/rawdata/THUMOS2014/Training/ucfTrainTestlist/classInd.txt"
 CLASS_INDEX_OUT="./class_index"
 
-#python $SRC"compute_UCF101_class_index.py" $CLASS_INDEX $CLASS_INDEX_OUT -p -z
+#python $CODE"compute_UCF101_class_index.py" $CLASS_INDEX $CLASS_INDEX_OUT -p -z
+#python makeNameIndexMap.py
+#python filterByLength.py
+#python extractFrames.py
 
-#python makeClassIndex.py
+python findTubelets.py
 
-python filterByLength.py
+
+

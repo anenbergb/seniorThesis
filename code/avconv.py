@@ -90,3 +90,44 @@ def extract_frame(videoName,frameName):
     # call ffmpeg and grab its stderr output
     p = subprocess.call('ffmpeg -i %s -r 1 -s qvga -t 1 -f image2 %s' % (videoName,frameName), shell=True)
     return p
+
+
+
+def extract_frames(video,dataSetDir):
+    """
+    Splits the video into frames of .png and .ppm format.
+
+    video: input video (full path to file)
+    dataSetDir: directory where the videoName directory will be located.
+            e.g. UCF
+    Extracts the first frame from the input video (videoName)
+    and saves it at the location (frameName)
+    """
+    #forces extracted frames to be 320x240 dim.
+    if not os.path.exists(video):
+        print '%s does not exist!' % video
+        return False
+    # '/afs/.../video_validation_0001001.mp4' >> video_validation_0001001
+    name = os.path.basename(video).split('.')[0]
+
+    videoDir = os.path.join(dataSetDir,name)
+
+    PNG_dir = os.path.join(videoDir,"Frames")
+    PPM_dir = os.path.join(videoDir,"ppm")
+
+    if not os.path.isdir(videoDir):
+        os.makedirs(videoDir)
+        os.makedirs(PNG_dir)
+        os.makedirs(PPM_dir)
+    else:
+        if not os.path.isdir(PNG_dir):
+            os.makedirs(PNG_dir)
+        if not os.path.isdir(PPM_dir):
+            os.makedirs(PPM_dir)
+
+    # call ffmpeg and grab its stderr output
+    p = subprocess.call([avconv, '-i', video, PNG_dir+'/%05d.png'])
+    p = subprocess.call([avconv, '-i', video, PPM_dir+'/%05d.ppm'])
+
+    return p
+
