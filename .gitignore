@@ -1,3 +1,11 @@
 *.fisher.npz
 *.png
 *.ppm
+*.mdb
+*.caffemodel
+*.solverstate
+./caffe_models/sample_5/train_lmdb/data.mdb
+./caffe_models/sample_5/test_lmdb/data.mdb
+./data/frames_detection/lists/train_list.txt
+./data/frames_detection/lists/fullpath_train_list.txt
+./data/frames_detection/lists/fullpath_test_list.txt

@@ -102,7 +102,7 @@ def runMatlabTubelet(frameDir):
         subprocess.call(script,shell=True)
 
 
-"""
+
 dataSets = ["UCF", "Validation", "Test"]
 for dataSet in dataSets[:2]:
     dataSetDir = os.path.join(DestinationDir,dataSet)
@@ -111,13 +111,13 @@ for dataSet in dataSets[:2]:
         runGBSeg(frameDir)
         runMotion2D(frameDir)
         runMatlabTubelet(frameDir)
-"""
 
+"""
 frameDir="./UCF/v_ApplyEyeMakeup_g08_c02/"
 runGBSeg(frameDir)
 runMotion2D(frameDir)
 runMatlabTubelet(frameDir)
-
+"""
 
 
 

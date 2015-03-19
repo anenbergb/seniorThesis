@@ -131,3 +131,35 @@ def extract_frames(video,dataSetDir):
 
     return p
 
+def extract_frames_jpg(video,dataSetDir):
+    """
+    Splits the video into frames of .jpg format
+
+    video: input video (full path to file)
+    dataSetDir: directory where the videoName directory will be located.
+            e.g. UCF
+    Extracts the first frame from the input video (videoName)
+    and saves it at the location (frameName)
+    """
+    #forces extracted frames to be 320x240 dim.
+    if not os.path.exists(video):
+        print '%s does not exist!' % video
+        return False
+    # '/afs/.../video_validation_0001001.mp4' >> video_validation_0001001
+    name = os.path.basename(video).split('.')[0]
+
+    videoDir = os.path.join(dataSetDir,name)
+
+    JPG_dir = os.path.join(videoDir,"JPG")
+
+    if not os.path.isdir(videoDir):
+        os.makedirs(videoDir)
+        os.makedirs(JPG_dir)
+    else:
+        if not os.path.isdir(JPG_dir):
+            os.makedirs(JPG_dir)
+
+    # call ffmpeg and grab its stderr output
+    p = subprocess.call([avconv, '-i', video, JPG_dir+'/%08d.jpg'])
+
+    return p
