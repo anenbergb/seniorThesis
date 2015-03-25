@@ -16,6 +16,21 @@ Example usage:
 
 python computeIDTF.py video_list.txt output_directory
 
+
+
+Usage: DenseTrackStab video_file [options]
+Options:
+  -h                        Display this message and exit
+  -S [start frame]          The start frame to compute feature (default: S=0 frame)
+  -E [end frame]            The end frame for feature computing (default: E=last frame)
+  -L [trajectory length]    The length of the trajectory (default: L=15 frames)
+  -W [sampling stride]      The stride for dense sampling feature points (default: W=5 pixels)
+  -N [neighborhood size]    The neighborhood size for computing the descriptor (default: N=32 pixels)
+  -s [spatial cells]        The number of cells in the nxy axis (default: nxy=2 cells)
+  -t [temporal cells]       The number of cells in the nt axis (default: nt=3 cells)
+  -H [human bounding box]   The human bounding box file to remove outlier matches (default: None)
+  
+
 """
 #Path to the video repository
 ucf101_path = "/afs/cs.stanford.edu/group/cvgl/rawdata/THUMOS2014/Training/videos/"
