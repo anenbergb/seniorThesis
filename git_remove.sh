@@ -1,3 +1,5 @@
-git filter-branch --force --index-filter "git rm --cached --ignore-unmatch data/frames_detection/lists/train_list.txt"
-git filter-branch --force --index-filter "git rm --cached --ignore-unmatch data/frames_detection/lists/fullpath_test_list.txt"
-git filter-branch --force --index-filter "git rm --cached --ignore-unmatch data/frames_detection/lists/fullpath_train_list.txt"
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch examples/ucf_recognition_20/cnn_features.npz"
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch data/frames_recognition_20/lists/fullpath_test_list.txt"
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch data/frames_recognition_20/lists/fullpath_train_list.txt"
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch examples/ucf_recognition_20/bov_test.npz"
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch examples/ucf_recognition_20/bov_train.npz"
